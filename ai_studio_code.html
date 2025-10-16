@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="app-title">My Accessible To-Do List</h1>
+    </header>
+
+    <main>
+        <section class="todo-input-section">
+            <h2 class="sr-only">Add New To-Do</h2> <!-- Screen reader only heading for context -->
+            <form id="todo-form">
+                <label for="new-todo-item" class="input-label">New To-Do Item:</label>
+                <input
+                    type="text"
+                    id="new-todo-item"
+                    name="newTodoItem"
+                    placeholder="e.g., Buy groceries"
+                    aria-describedby="todo-input-description"
+                    required
+                >
+                <span id="todo-input-description" class="sr-only">Enter a task you need to complete.</span>
+                <button type="submit" id="add-todo-button">Add Item</button>
+            </form>
+            <div id="error-message" role="alert" aria-live="assertive" class="error-hidden">
+                Please enter a task before adding.
+            </div>
+        </section>
+
+        <section class="todo-list-section">
+            <h2 id="current-tasks-heading">Current Tasks</h2>
+            <ul id="todo-list" aria-labelledby="current-tasks-heading">
+                <!-- To-Do items will be dynamically inserted here by JavaScript -->
+                <li role="alert" aria-live="polite" class="sr-only">New task added.</li>
+            </ul>
+            <p id="no-tasks-message">No tasks yet. Add one above!</p>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2023 Accessible Apps</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
